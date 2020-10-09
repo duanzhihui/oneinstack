@@ -40,10 +40,11 @@ start() {
     echo -e "\e[00;31mTomcat is already running (pid: $pid)\e[00m"
   else
     echo -e "\e[00;32mStarting tomcat\e[00m"
+    cd $CATALINA_HOME/bin/
     if [ `user_exists $TOMCAT_USER` = "1" ]; then
-      su $TOMCAT_USER -c $CATALINA_HOME/bin/startup.sh
+      su $TOMCAT_USER -c ./startup.sh
     else
-      $CATALINA_HOME/bin/startup.sh
+      ./startup.sh
     fi
     status
   fi
